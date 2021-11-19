@@ -4,3 +4,5 @@ out/keys/user/*
 test.py
 venv
 venv/*
+.idea
+*__pycache__*
