@@ -1,0 +1,6 @@
+out/config/*
+out/keys/node/*
+out/keys/user/*
+test.py
+venv
+venv/*
