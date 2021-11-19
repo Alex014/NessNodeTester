@@ -1,6 +1,8 @@
 # NESS Node Tester - test suit for NESS nodes
 * codegen.py
+
  Private and public code generation for user (client) and node
+
  Usage:
 ```
 # Code generator for Ness nodes
@@ -42,11 +44,16 @@ python codegen.py -h
 python codegen.py --help
 ```
 * configen.py
+
  Configuration generation for node
+ 
  Usage: `python configen.py <node URL>`
 * test-auth.py
+
  Authentication testing
+
  Run after codegen.py
+ 
  Usage: `python test-auth.py <username> <node URL>`
 
 ## Instalation
