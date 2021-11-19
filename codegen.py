@@ -1,3 +1,4 @@
+import os
 import sys
 from base64 import b64encode
 from base64 import b64decode
@@ -53,6 +54,18 @@ class Codegen:
         f.close()
 
     def generate_node(self, url, tags: str):
+        if not os.path.exists('out'):
+            os.mkdir('out')
+
+        if not os.path.exists('out/config'):
+            os.mkdir('out/config')
+
+        if not os.path.exists('out/keys'):
+            os.mkdir('out/keys')
+
+        if not os.path.exists('out/keys/node'):
+            os.mkdir('out/keys/node')
+
         keypair = self.__keypair()
 
         node = {
@@ -79,6 +92,18 @@ class Codegen:
         # Prng config
 
     def generate_user(self, username: str, keypair_cnt: int, keys: tuple, tags: str):
+        if not os.path.exists('out'):
+            os.mkdir('out')
+
+        if not os.path.exists('out/config'):
+            os.mkdir('out/config')
+
+        if not os.path.exists('out/keys'):
+            os.mkdir('out/keys')
+
+        if not os.path.exists('out/keys/user'):
+            os.mkdir('out/keys/user')
+
         key_pairs = self.__keypairs(keypair_cnt)
         singles = {}
 
@@ -116,9 +141,9 @@ class Codegen:
         tab2 = '\t\t'
 
         worm = "<worm>"+linesep+\
-            tab + "<node type=\"ness\" url=\"" + node["url"] + "\" nonce=\"" + node["nonce"] + "\" private=\"" + \
-            node["private"] + "\" verify=\"" + node["verify"] + "\" public=\"" + node["public"] + "\" tags=\"" + \
-               node["tags"] + "\">" + linesep + \
+            tab + "<node type=\"ness\" url=\"" + node["url"] + "\" nonce=\"" + node["nonce"] + "\"   " + \
+            " verify=\"" + node["verify"] + "\" public=\"" + node["public"] + "\" tags=\"" + \
+            node["tags"] + "\">" + linesep + \
             tab2 + "<!-- Here tags may be different for each type of node or each node -->" + linesep + \
             tab + "</node>" + linesep + \
             "</worm>"
@@ -342,7 +367,6 @@ class Terminal:
                 self.__manual()
         else:
             self.__manual()
-
 
 t = Terminal()
 t.process()
